@@ -20,14 +20,13 @@ const gendiff = (filepath1, filepath2) => {
     ['asc', 'desc'],
   )
     .reduce((acc, elem) => {
-      const lastItem = acc.at(-1);
-      if (lastItem === undefined
-        || lastItem.key !== elem.key
-        || (lastItem.key === elem.key && lastItem.value !== elem.value)) {
+      const last = acc.at(-1);
+      if (last === undefined
+        || last.key !== elem.key
+        || (last.key === elem.key && last.value !== elem.value)) {
         return [...acc, elem];
       }
-      lastItem.prefix = equalPrefix;
-      return [...acc];
+      return [...acc.slice(-1), { key: last.key, value: last.value, prefix: equalPrefix }];
     }, [])
     .map((elem) => `  ${elem.prefix} ${elem.key}: ${elem.value}`);
   return ['{', ...diff, '}'].join('\n');
