@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Hexlet module 3 project: gendiff",
   "bin": {
-    "gendiff": "bin/node.js"
+    "gendiff": "bin/nodejs-package.js"
   },
   "scripts": {
     "test": "npx jest"
@@ -25,6 +25,7 @@
     "eslint-plugin-import": "^2.27.5"
   },
   "dependencies": {
-    "commander": "^10.0.1"
+    "commander": "^10.0.1",
+    "lodash": "^4.17.21"
   }
 }
