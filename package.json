@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Hexlet module 3 project: gendiff",
   "bin": {
-    "gendiff": "bin/gendiff.js"
+    "gendiff": "bin/node.js"
   },
   "scripts": {
     "test": "npx jest"
