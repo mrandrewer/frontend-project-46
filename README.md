@@ -12,4 +12,4 @@ sudo npm link
 ```bash
 gendiff filename1.json filename2.json
 ```
-https://asciinema.org/a/mkM7YtIP9HlJnkb3o8mDBltUK
+[![asciicast](https://asciinema.org/a/mkM7YtIP9HlJnkb3o8mDBltUK.svg)](https://asciinema.org/a/mkM7YtIP9HlJnkb3o8mDBltUK)
