@@ -26,7 +26,7 @@ const gendiff = (filepath1, filepath2) => {
         || (last.key === elem.key && last.value !== elem.value)) {
         return [...acc, elem];
       }
-      return [...acc.slice(-1), { key: last.key, value: last.value, prefix: equalPrefix }];
+      return [...acc.slice(0, -1), { key: last.key, value: last.value, prefix: equalPrefix }];
     }, [])
     .map((elem) => `  ${elem.prefix} ${elem.key}: ${elem.value}`);
   return ['{', ...diff, '}'].join('\n');
