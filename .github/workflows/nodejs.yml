@@ -39,6 +39,10 @@ jobs:
 
 name: Test & publish code coverage
 
+on:
+  - push
+  - pull_request
+
 jobs:
   build:
 
