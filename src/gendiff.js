@@ -1,19 +1,16 @@
-import path from 'node:path';
-import { readFileSync } from 'node:fs';
 import _ from 'lodash';
+import readFile from './readFile.js';
 
 const removePrefix = '-';
 const addPrefix = '+';
 const equalPrefix = ' ';
 
-const getFileFields = (filePath, prefix) => {
-  const json = JSON.parse(readFileSync(path.resolve(filePath), 'utf8'));
-  return Object.entries(json).map((e) => ({ key: e[0], value: e[1], prefix }));
-};
+const getFields = (filePath, prefix) => Object.entries(readFile(filePath))
+  .map((e) => ({ key: e[0], value: e[1], prefix }));
 
 const gendiff = (filepath1, filepath2) => {
-  const fields1 = getFileFields(filepath1, removePrefix);
-  const fields2 = getFileFields(filepath2, addPrefix);
+  const fields1 = getFields(filepath1, removePrefix);
+  const fields2 = getFields(filepath2, addPrefix);
   const diff = _.orderBy(
     [...new Set([...fields1, ...fields2])],
     ['key', 'prefix'],
