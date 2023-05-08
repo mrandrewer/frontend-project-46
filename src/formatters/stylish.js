@@ -20,6 +20,8 @@ const getValueStr = (value, indent) => {
   return ['{', ...str, `${getPrefix(indent)}}`].join('\n');
 };
 
+const getLine = (indent, type, key, value) => `${getPrefix(indent, type)}${key}: ${getValueStr(value, indent)}`;
+
 const formatStylish = (diff) => {
   const iter = (records, indent) => {
     const str = _.orderBy(records, ['key'])
@@ -27,16 +29,16 @@ const formatStylish = (diff) => {
         switch (elem.type) {
           case 'add':
           case 'equal':
-            return `${getPrefix(indent, elem.type)}${elem.key}: ${getValueStr(elem.newValue, indent)}`;
+            return getLine(indent, elem.type, elem.key, elem.newValue);
           case 'remove':
-            return `${getPrefix(indent, elem.type)}${elem.key}: ${getValueStr(elem.oldValue, indent)}`;
+            return getLine(indent, elem.type, elem.key, elem.oldValue);
           case 'update':
             return [
-              `${getPrefix(indent, 'remove')}${elem.key}: ${getValueStr(elem.oldValue, indent)}`,
-              `${getPrefix(indent, 'add')}${elem.key}: ${getValueStr(elem.newValue, indent)}`,
+              getLine(indent, 'remove', elem.key, elem.oldValue),
+              getLine(indent, 'add', elem.key, elem.newValue),
             ];
           case 'nested':
-            return `${getPrefix(indent)}${elem.key}: ${iter(elem.children, indent + 1)}`;
+            return getLine(indent, elem.type, elem.key, iter(elem.children, indent + 1));
           default:
             throw new Error('Unknown record type in diff');
         }
