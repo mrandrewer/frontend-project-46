@@ -24,21 +24,21 @@ const getDiff = (obj1, obj2) => {
   const keys1 = _.keys(obj1);
   const keys2 = _.keys(obj2);
   const allKeys = _.union(keys1, keys2);
-  return allKeys.reduce((acc, key) => {
-    let record;
+  return allKeys.map((key) => {
     if (!keys1.includes(key)) {
-      record = createAddRecord(key, obj2[key]);
-    } else if (!keys2.includes(key)) {
-      record = createRemoveRecord(key, obj1[key]);
-    } else if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
-      record = createNestedRecord(key, getDiff(obj1[key], obj2[key]));
-    } else if (obj1[key] === obj2[key]) {
-      record = createEqualRecord(key, obj1[key]);
-    } else {
-      record = createUpdateRecord(key, obj1[key], obj2[key]);
+      return createAddRecord(key, obj2[key]);
     }
-    return [...acc, record];
-  }, []);
+    if (!keys2.includes(key)) {
+      return createRemoveRecord(key, obj1[key]);
+    }
+    if (_.isObject(obj1[key]) && _.isObject(obj2[key])) {
+      return createNestedRecord(key, getDiff(obj1[key], obj2[key]));
+    }
+    if (obj1[key] === obj2[key]) {
+      return createEqualRecord(key, obj1[key]);
+    }
+    return createUpdateRecord(key, obj1[key], obj2[key]);
+  });
 };
 
 export default getDiff;
