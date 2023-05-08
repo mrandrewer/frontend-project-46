@@ -19,11 +19,20 @@ The code above installs gendiff module locally from cloned repository.
 ## Usage
 
 ```shell
-gendiff filename1.json filename2.json
-```
+gendiff [options] <filepath1> <filepath2>
 
-#### Compare two json files
+Options:
+  -V, --version        output the version number
+  -f, --format <type>  output format
+  -h, --help           display help for command
+```
+## Examples
+
+#### Compare two simple json files
 [![asciicast](https://asciinema.org/a/mkM7YtIP9HlJnkb3o8mDBltUK.svg)](https://asciinema.org/a/mkM7YtIP9HlJnkb3o8mDBltUK)
 
-#### Compare two yml files
+#### Compare two simple yml files
 [![asciicast](https://asciinema.org/a/q6fiHG8xVHHwDlhI9OglmiKtr.svg)](https://asciinema.org/a/q6fiHG8xVHHwDlhI9OglmiKtr)
+
+#### Compare two complex files
+[![asciicast](https://asciinema.org/a/vFlzgHco6gpuLFBbRUqShpsiz.svg)](https://asciinema.org/a/vFlzgHco6gpuLFBbRUqShpsiz)
