@@ -1,14 +1,15 @@
 import formatStylish from './stylish.js';
+import formatPlain from './plain.js';
 
-const format = (diff, formatName) => {
+const getFormatter = (formatName) => {
   switch (formatName.toLowerCase()) {
     case 'stylish':
-      return formatStylish(diff);
-    case 'stylish':
-      return formatStylish(diff);
+      return formatStylish;
+    case 'plain':
+      return formatPlain;
     default:
       throw new Error('Unknown format');
   }
 };
 
-export default format;
+export default getFormatter;

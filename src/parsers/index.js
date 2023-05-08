@@ -1,19 +1,19 @@
 import yaml from 'js-yaml';
 
-const parseJSON = (str) => JSON.parse(str);
+const parseJSON = (data) => JSON.parse(data);
 
-const parseYML = (str) => yaml.load(str);
+const parseYML = (data) => yaml.load(data);
 
-const parseData = (data, format) => {
+const getParser = (format) => {
   switch (format.toLowerCase()) {
     case '.yml':
     case '.yaml':
-      return parseYML(data);
+      return parseYML;
     case '.json':
-      return parseJSON(data);
+      return parseJSON;
     default:
       throw new Error('Unknown data type');
   }
 };
 
-export default parseData;
+export default getParser;
