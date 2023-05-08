@@ -1,4 +1,4 @@
-import { test, expect } from '@jest/globals';
+import { test, expect, beforeAll } from '@jest/globals';
 import { fileURLToPath } from 'url';
 import { readFileSync } from 'node:fs';
 import path from 'path';
