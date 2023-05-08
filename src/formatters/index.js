@@ -1,7 +1,9 @@
 import formatStylish from './stylish.js';
 
-const format = (diff, type) => {
-  switch (type.toLowerCase()) {
+const format = (diff, formatName) => {
+  switch (formatName.toLowerCase()) {
+    case 'stylish':
+      return formatStylish(diff);
     case 'stylish':
       return formatStylish(diff);
     default:
