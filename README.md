@@ -23,7 +23,7 @@ gendiff [options] <filepath1> <filepath2>
 
 Options:
   -V, --version        output the version number
-  -f, --format <type>  output format
+  -f, --format <type>  output format (choices: "stylish", "plain", default: "stylish")
   -h, --help           display help for command
 ```
 ## Examples
@@ -36,3 +36,6 @@ Options:
 
 #### Compare two complex files
 [![asciicast](https://asciinema.org/a/vFlzgHco6gpuLFBbRUqShpsiz.svg)](https://asciinema.org/a/vFlzgHco6gpuLFBbRUqShpsiz)
+
+#### Use plain output format
+[![asciicast](https://asciinema.org/a/yH6NSLp5eXXexIxL5bskz6JLZ.svg)](https://asciinema.org/a/yH6NSLp5eXXexIxL5bskz6JLZ)

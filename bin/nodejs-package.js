@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { program } from 'commander';
+import { Option, program } from 'commander';
 import gendiff from '../index.js';
 
 program
@@ -7,7 +7,9 @@ program
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
   .arguments('<filepath1> <filepath2>')
-  .option('-f, --format <type>', 'output format')
+  .addOption(new Option('-f, --format <type>', 'output format')
+    .choices(['stylish', 'plain'])
+    .default('stylish'))
   .action((filepath1, filepath2, options) => {
     console.log(gendiff(filepath1, filepath2, options.format));
   });
