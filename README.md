@@ -18,12 +18,12 @@ The code above installs gendiff module locally from cloned repository.
 
 ## Usage
 
-```shell
+```
 gendiff [options] <filepath1> <filepath2>
 
 Options:
   -V, --version        output the version number
-  -f, --format <type>  output format (choices: "stylish", "plain", default: "stylish")
+  -f, --format <type>  output format (choices: "stylish", "plain", "json", default: "stylish")
   -h, --help           display help for command
 ```
 ## Examples
@@ -39,3 +39,6 @@ Options:
 
 #### Use plain output format
 [![asciicast](https://asciinema.org/a/yH6NSLp5eXXexIxL5bskz6JLZ.svg)](https://asciinema.org/a/yH6NSLp5eXXexIxL5bskz6JLZ)
+
+#### Use json output format
+[![asciicast](https://asciinema.org/a/Xkeb1XXqqkO76HdNoLmHJ7XHJ.svg)](https://asciinema.org/a/Xkeb1XXqqkO76HdNoLmHJ7XHJ)
