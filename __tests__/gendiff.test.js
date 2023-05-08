@@ -54,11 +54,11 @@ describe('test gendiff', () => {
     expect(gendiff(file1json, file2json)).toBe(expectedStylish);
   });
 
-  test('check error on unknown file type', () => {
-    expect(() => gendiff(file1json, file2txt)).toThrow('Unknown data type');
+  test('check error on unknown data type', () => {
+    expect(() => gendiff(file1json, file2txt)).toThrow('Unknown data type .txt');
   });
 
   test('check error on unknown format', () => {
-    expect(() => gendiff(file1json, file2json, 'formatDoesNotExist')).toThrow('Unknown format');
+    expect(() => gendiff(file1json, file2json, 'formatDoesNotExist')).toThrow('Unknown format formatDoesNotExist');
   });
 });

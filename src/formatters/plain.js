@@ -29,7 +29,7 @@ const formatPlain = (diff) => {
         case 'nested':
           return iter(elem.children, getFullPath(elem.key, parent));
         default:
-          throw new Error('Unknown record type in diff');
+          throw new Error(`Unknown element type ${elem.type}`);
       }
     })
     .flat(Infinity)

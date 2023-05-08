@@ -12,7 +12,7 @@ const getParser = (format) => {
     case '.json':
       return parseJSON;
     default:
-      throw new Error('Unknown data type');
+      throw new Error(`Unknown data type ${format}`);
   }
 };
 

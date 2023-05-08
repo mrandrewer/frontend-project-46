@@ -40,7 +40,7 @@ const formatStylish = (diff) => {
           case 'nested':
             return getLine(indent, elem.type, elem.key, iter(elem.children, indent + 1));
           default:
-            throw new Error('Unknown record type in diff');
+            throw new Error(`Unknown element type ${elem.type}`);
         }
       });
     return ['{', ...str, `${getPrefix(indent - 1)}}`].join('\n');
