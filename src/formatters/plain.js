@@ -6,7 +6,7 @@ const getValueStr = (value) => {
   if (_.isObject(value)) {
     return '[complex value]';
   }
-  if (typeof value === 'string') {
+  if (_.isString(value)) {
     return `'${value}'`;
   }
   return `${value}`;
@@ -18,16 +18,16 @@ const formatPlain = (diff) => {
       switch (elem.type) {
         case 'add':
           return `Property '${getFullPath(elem.key, parent)}' was added `
-            + `with value: ${getValueStr(elem.children[0])}`;
+            + `with value: ${getValueStr(elem.newValue)}`;
         case 'remove':
           return `Property '${getFullPath(elem.key, parent)}' was removed`;
-        case 'none':
+        case 'equal':
           return null;
         case 'update':
           return `Property '${getFullPath(elem.key, parent)}' was updated. `
-            + `From ${getValueStr(elem.children[0])} to ${getValueStr(elem.children[1])}`;
+            + `From ${getValueStr(elem.oldValue)} to ${getValueStr(elem.newValue)}`;
         case 'nested':
-          return iter(elem.children[0], getFullPath(elem.key, parent));
+          return iter(elem.children, getFullPath(elem.key, parent));
         default:
           throw new Error('Unknown record type in diff');
       }

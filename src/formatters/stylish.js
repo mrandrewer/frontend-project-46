@@ -26,16 +26,17 @@ const formatStylish = (diff) => {
       .flatMap((elem) => {
         switch (elem.type) {
           case 'add':
+          case 'equal':
+            return `${getPrefix(indent, elem.type)}${elem.key}: ${getValueStr(elem.newValue, indent)}`;
           case 'remove':
-          case 'none':
-            return `${getPrefix(indent, elem.type)}${elem.key}: ${getValueStr(elem.children[0], indent)}`;
+            return `${getPrefix(indent, elem.type)}${elem.key}: ${getValueStr(elem.oldValue, indent)}`;
           case 'update':
             return [
-              `${getPrefix(indent, 'remove')}${elem.key}: ${getValueStr(elem.children[0], indent)}`,
-              `${getPrefix(indent, 'add')}${elem.key}: ${getValueStr(elem.children[1], indent)}`,
+              `${getPrefix(indent, 'remove')}${elem.key}: ${getValueStr(elem.oldValue, indent)}`,
+              `${getPrefix(indent, 'add')}${elem.key}: ${getValueStr(elem.newValue, indent)}`,
             ];
           case 'nested':
-            return `${getPrefix(indent)}${elem.key}: ${iter(elem.children[0], indent + 1)}`;
+            return `${getPrefix(indent)}${elem.key}: ${iter(elem.children, indent + 1)}`;
           default:
             throw new Error('Unknown record type in diff');
         }
